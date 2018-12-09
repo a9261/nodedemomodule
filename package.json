@@ -1,0 +1,35 @@
+{
+  "name": "nodedemomodule",
+  "version": "1.1.2",
+  "description": "",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "mocha --colors --compilers js:babel-core/register ",
+    "start": "webpack --colors && node ./dist/entry.bundle.js",
+    "push": "babel lib -d dist && npm publish",
+    "build": "nyc mocha --colors --compilers js:babel-core/register && babel lib -d dist ",
+    "bench": "babel lib -d dist && babel benchmark/index.js --out-file benchmark/dist.js && node benchmark/dist.js",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.7.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "tern": "^0.23.0"
+  }
+}
